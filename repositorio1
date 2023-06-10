@@ -1,0 +1,30 @@
+import requests
+import json
+
+# Datos de autenticación
+token = 'TU_TOKEN_DE_ACCESO'
+
+# Crear un nuevo repositorio
+def crear_repositorio(nombre):
+    url = 'https://api.github.com/user/repos'
+    headers = {
+        'Authorization': 'Token ' + token,
+        'Accept': 'application/vnd.github.v3+json'
+    }
+    payload = {
+        'name': nombre,
+        'auto_init': True
+    }
+
+    response = requests.post(url, headers=headers, data=json.dumps(payload))
+
+    if response.status_code == 201:
+        print('Repositorio creado exitosamente')
+    else:
+        print('Error al crear el repositorio')
+        print('Código de estado:', response.status_code)
+        print('Mensaje de error:', response.text)
+
+# Ejemplo de uso
+nombre_repositorio = 'mi-repositorio'
+crear_repositorio(nombre_repositorio)
