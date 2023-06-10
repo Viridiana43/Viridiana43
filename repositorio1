@@ -5,7 +5,7 @@ import json
 token = 'TU_TOKEN_DE_ACCESO'
 
 # Crear un nuevo repositorio
-def crear_repositorio(nombre):
+def crear_repositorio(NOMBRE):
     url = 'https://api.github.com/user/repos'
     headers = {
         'Authorization': 'Token ' + token,
